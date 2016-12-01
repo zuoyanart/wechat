@@ -1,0 +1,36 @@
+{
+  "name": "thinkjs-application",
+  "description": "application created by thinkjs",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node www/development.js",
+    "compile": "babel --presets es2015-loose,stage-1 --plugins transform-runtime src/ --out-dir app/ --retain-lines",
+    "watch-compile": "node -e \"console.log('<npm run watch-compile> no longer need, use <npm start> command direct.');console.log();\"",
+    "watch": "npm run watch-compile"
+  },
+  "dependencies": {
+    "babel-runtime": "6.x.x",
+    "gm": "^1.23.0",
+    "moment": "^2.14.1",
+    "node-pinyin": "^0.2.3",
+    "objectid": "^3.2.1",
+    "qiniu": "^6.1.11",
+    "source-map-support": "^0.4.0",
+    "thinkjs": "2.2.x"
+  },
+  "devDependencies": {
+    "babel-cli": "6.x.x",
+    "babel-preset-es2015-loose": "6.x.x",
+    "babel-preset-stage-1": "6.x.x",
+    "babel-plugin-transform-runtime": "6.x.x",
+    "babel-core": "6.x.x",
+    "superagent": "1.7.2",
+    "xss": "0.2.10",
+    "cheerio": "0.20.0",
+    "chai": "*",
+    "mochawesome": "*",
+    "ndir": "*"
+  },
+  "repository": "https://github.com/zuoyanart/pizzaManage",
+  "license": "MIT"
+}
