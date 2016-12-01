@@ -3,7 +3,7 @@
  * config
  */
 export default {
-  port: 8360,
+  port: 8371,
   host: "",
   timeout: 60, //60s
   route_on: true,//开始自定义路由
@@ -15,5 +15,8 @@ export default {
   default_action: "index",
   json_content_type: "application/json",
   openApi: false,
-  api: 'http://192.168.1.134:4000/v1/'
+  api: 'http://192.168.1.134:4000/v1/',
+  wx_AppID:'wxd01c0276b265afaf',
+  wx_AppSecret:"873f7737de041d73f864867fe4e2bcad",
+  wx_token:"XXZI7Q7QUUZXDKDS2ZQHCUC7EDOCCYIM"
 };

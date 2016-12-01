@@ -1,7 +1,17 @@
 'use strict';
 /**
- * config
+ * db config
+ * @type {Object}
  */
 export default {
-  //key: value
+    db: {
+        adapter: {
+            mysql: {
+                prefix: "pz_wx_",
+            },
+            mongo: {
+
+            }
+        }
+    }
 };

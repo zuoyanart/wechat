@@ -14,7 +14,7 @@ export default {
                 port: "",
                 database: "pizzaCms", //数据库名称
                 user: "root", //数据库帐号
-                password: "huabinglan@@227", //数据库密码
+                password: "123456", //数据库密码
                 prefix: "pz_",
                 encoding: "utf8"
             },

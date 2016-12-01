@@ -4,6 +4,8 @@
  * hook config
  * https://thinkjs.org/doc/middleware.html#toc-df6
  */
-export default {
-
-}
+ export default {
+     //view_filter : ['append', 'debug_toolbar'],
+     payload_parse: ['prepend', 'parse_wechat'],
+     // logic_before: ["prepend", "csrf"]
+ }

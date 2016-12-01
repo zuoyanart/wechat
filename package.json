@@ -16,7 +16,9 @@
     "objectid": "^3.2.1",
     "qiniu": "^6.1.11",
     "source-map-support": "^0.4.0",
-    "thinkjs": "2.2.x"
+    "think-wechat": "^0.1.1",
+    "thinkjs": "2.2.x",
+    "wechat-api": "^1.32.0"
   },
   "devDependencies": {
     "babel-cli": "6.x.x",
