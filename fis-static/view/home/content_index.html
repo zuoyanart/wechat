@@ -48,7 +48,7 @@
                 </div>
                 <div class="cmttitle">最新评论</div>
                 <ul class="cmtlist">
-                
+
                 </ul>
                 <div class="form" style="padding:0 0 50px 0;">
                     <div style="padding:0;">
@@ -60,17 +60,13 @@
                 </div>
             </div>
             <div class="right">
-                <%- paiming%>
+
             </div>
             <div style="clear:both;"></div>
         </div>
         <link rel="import" href="/widget/home-footer/footer.html?__inline">
     </div>
     <script type="text/javascript">
-       var comment = require("home/content/comment");
-       cmt = new comment(<%= news.id%>);
-       cmt.list(1);
-       cmt.create();
     </script>
 </body>
 

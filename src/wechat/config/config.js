@@ -4,6 +4,7 @@
  * @type {Object}
  */
 export default {
+    domain: 'http://t.lingirl.com',
     db: {
         adapter: {
             mysql: {

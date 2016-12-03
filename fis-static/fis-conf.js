@@ -38,7 +38,7 @@ fis.match("**/*", {
         // optimizer: fis.plugin('uglify-js')
     })
     //page下面的页面发布时去掉page文件夹
-    .match(/^\/view\/(common|master|admin)\/(.*)\.(html)$/i, {
+    .match(/^\/view\/(common|master|admin|wechat)\/(.*)\.(html)$/i, {
         parser: fis.plugin('swigt'),
         useCache: false,
         release: '/$&'

@@ -11,7 +11,6 @@ export default class extends Base {
      */
     indexAction() {
         let echostr = this.get('echostr');
-        return this.reply("asdasd");
         return this.end(echostr);
     }
 
@@ -21,73 +20,39 @@ export default class extends Base {
 
     //关键词消息回复
     async textAction() {
+        let keywordM = this.model("keywords");
         let message = this.post();
-        // console.log(message);
         let key = message.Content.trim();
-        let kmodel = this.model('keywords');
-        let isKey = await kmodel.getByWorld(key);
-
-        if (!think.isEmpty(isKey)) {
-            //是关键字
-            let rulemodel = this.model('keywords_rule');
-            let replyliststr = await rulemodel.where({
-                id: isKey.rule_id
-            }).getField('reply_id', true);
-            let replylisttmp = replyliststr.split(',');
-            let replylist = [];
-            for (let i in replylisttmp) {
-                if (replylisttmp[i] != '') {
-                    replylist.push(replylisttmp[i]);
-                }
-            }
-            if (!think.isEmpty(replylist)) {
-                let randomi = parseInt(Math.random() * replylist.length);
-                let replymodel = this.model('wx_replylist');
-                let data = await replymodel.where({
-                    id: replylist[randomi]
-                }).getField('content', true);
-                return this.reply(data);
-            }
-        }
-        //普通消息回复
-        let replymodel = this.model('wx_replylist');
-        let datas = await replymodel.where({
-            reply_type: 2
-        }).order("create_time DESC").select();
-        let data = datas[0];
-        let content;
-        switch (data.type) {
-            case "text":
-                content = data.content;
-                break;
-            case "news":
-                content = JSON.parse(data.content);
-                break;
-        }
-        this.reply(content);
-
+        let rep = await keywordM.reply(key);
+        this.reply(rep);
     }
 
     //事件关注
     async eventAction() {
         let message = this.post();
+        let keywordM = this.model("keywords");
+        let content = message;
         switch (message.Event) {
-
             case "subscribe": //首次关注
-                let datas = await this.model("wx_replylist").where({
-                    reply_type: 1
-                }).order("create_time DESC").select();
-                let data = datas[0];
-                let content;
-                switch (data.type) {
-                    case "text":
-                        content = data.content;
-                        break;
-                    case "news":
-                        content = JSON.parse(data.content);
-                        break;
+                content = await keywordM.getByType(500);
+                if (content.keyword != "") {
+                    content = await keywordM.reply(content.keyword);
                 }
-                this.reply(content);
+                this.reply("");
+                // let datas = await this.model("wx_replylist").where({
+                //     reply_type: 1
+                // }).order("create_time DESC").select();
+                // let data = datas[0];
+                // let content;
+                // switch (data.type) {
+                //     case "text":
+                //         content = data.content;
+                //         break;
+                //     case "news":
+                //         content = JSON.parse(data.content);
+                //         break;
+                // }
+                // this.reply(content);
                 break;
             case "unsubscribe": //取消关注
                 //todo
@@ -113,13 +78,11 @@ export default class extends Base {
         // this.reply(JSON.stringify(message));
     }
     __call() {
-        this.reply(DEFULT_AUTO_REPLY);
-    }
-
-
-    /**
-     * 获取用户分组
-     */
+            this.reply(DEFULT_AUTO_REPLY);
+        }
+        /**
+         * 获取用户分组
+         */
     groupsAction() {
             //let api = new API('wxec8fffd0880eefbe', 'a084f19ebb6cc5dddd2988106e739a07');
             let api = new API('wxe8c1b5ac7db990b6', 'ebcd685e93715b3470444cf6b7e763e6');

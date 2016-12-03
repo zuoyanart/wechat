@@ -1,0 +1,30 @@
+{% extends "../master/index.html" %} {% block css%} {% endblock %} {% block title %} 文字回复 {% endblock %}
+<!---->
+{% block content %}
+<div class="menu">
+    <a href="javascript:history.back();">返回</a>
+</div>
+<ul class="list" id="list">
+    <div class="form" style="width:800px;">
+        <div>
+            <label for="">关键字</label>
+            <input type="text" id="keyword" name="keyword" placeholder="用空格隔开">
+        </div>
+        <div>
+            <label for="">回复内容</label>
+            <textarea rows="20" cols="40" id="content" name="content"></textarea>
+        </div>
+        <div>
+            <input type="submit" class="btn btn-primary" value="更新">
+        </div>
+    </div>
+</ul>
+{% endblock %}
+<!---->
+{% block js %}
+<script type="text/javascript">
+    var textReplay = require('wechat/text/text');
+    textReplay.get();
+    textReplay.edit();
+</script>
+{% endblock %}
